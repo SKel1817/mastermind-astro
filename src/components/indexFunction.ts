@@ -1,5 +1,6 @@
 function startGame() {
   console.log("Game Started");
+  window.location.href = '/gameboard';
 }
 
 if (typeof window !== 'undefined') {
