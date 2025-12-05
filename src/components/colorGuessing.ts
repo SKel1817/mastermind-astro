@@ -6,6 +6,14 @@ let userGuesses: string[][] =
 [['', '', '', ''], 
  ['', '', '', ''], 
  ['', '', '', ''], 
+ ['', '', '', ''],
+ ['', '', '', ''],
+ ['', '', '', ''],
+ ['', '', '', ''],
+ ['', '', '', ''],
+ ['', '', '', ''],
+ ['', '', '', ''],
+ ['', '', '', ''],
  ['', '', '', '']]; 
 //2d array, each row is an attempt.
 
@@ -22,16 +30,17 @@ function guessColor(guess: string): void {
     console.log(`${guess} guess for ${attemptRow}, ${attemptCol}`);
     attemptCol++; //increment guess
     if (attemptCol >= 4) {
-        if (attemptRow >= 4) {
+        if (attemptRow >= 12) {
             alert("No more attempts left!");
             return;
         }else{
             checkAnswer();
             attemptRow++; //handle guess grid traversal
-            if(attemptRow >= 4){
+            if(attemptRow >= 12){
                 console.log('game over');
                 return;
             }
+            console.log('next row');
             attemptCol = 0;
         }
     }
