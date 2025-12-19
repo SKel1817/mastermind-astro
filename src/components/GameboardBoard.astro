@@ -1,41 +1,6 @@
----
-import Layout from "../layouts/Layout.astro";
----
-<script src="../components/colorGuessing">
-</script>
+<script src="/mastermind-astro/src/components/colorGuessing.ts"></script>
 
-
-<Layout>
-  <div id="game-container">
-    <header>
-      <h1>Mastermind</h1>
-      <p class="subtitle">Crack the secret code in 12 attempts</p>
-    </header>
-
-    <main>
-      <!-- Color Selection Palette -->
-      <section id="color-palette">
-        <p class="palette-label">Choose your colors:</p>
-        <div class="palette-buttons">
-          <button id="guess-red" class="color-btn red" aria-label="Select red"
-          ></button>
-          <button
-            id="guess-blue"
-            class="color-btn blue"
-            aria-label="Select blue"></button>
-          <button
-            id="guess-green"
-            class="color-btn green"
-            aria-label="Select green"></button>
-          <button
-            id="guess-yellow"
-            class="color-btn yellow"
-            aria-label="Select yellow"></button>
-        </div>
-      </section>
-
-      <!-- Game Board -->
-      <section id="game-board">
+<section id="game-board">
         <table>
           <thead>
             <tr>
@@ -101,11 +66,13 @@ import Layout from "../layouts/Layout.astro";
           </div>
         </div>
       </section>
-    </main>
-  </div>
-</Layout>
 
-<style>
+      <!-- Controls -->
+      <section id="game-controls">
+        <button id="reset-game" class="control-btn" aria-label="Reset game">Reset</button>
+      </section>
+
+  <style is:global>
   :root {
     --bg-primary: #1a1b26;
     --bg-secondary: #24283b;
