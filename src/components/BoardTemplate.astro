@@ -1,33 +1,42 @@
----
-import Layout from "../layouts/Layout.astro";
-import ColorPalette from "../components/ColorPalette.astro";
-import BoardTemplate from "../components/BoardTemplate.astro";
-import GameControls from "../components/GameControls.astro";
-import Legend from "../components/LegendComponent.astro";
----
-<script src="../components/colorGuessing">
-</script>
-
-
-<Layout>
-  <div id="game-container">
-    <header>
-      <h1>Mastermind</h1>
-      <p class="subtitle">Crack the secret code in 12 attempts</p>
-    </header>
-    <main>
-      <ColorPalette />
-      <BoardTemplate />
-      <!-- Hidden Answer (revealed on game end) -->
-      <GameControls />
-      <!-- Legend -->
-      <Legend />
-    </main>
-  </div>
-</Layout>
+<section id="game-board">
+        <table>
+          <thead>
+            <tr>
+              <th class="row-num">#</th>
+              <th class="guess-header">Your Guess</th>
+              <th class="feedback-header">Feedback</th>
+            </tr>
+          </thead>
+          <tbody id="guess-rows">
+            {
+              Array.from({ length: 12 }, (_, i) => (
+                <tr class="guess-row" data-row={i}>
+                  <td class="row-num">{i + 1}</td>
+                  <td class="guess-cell">
+                    <div class="guess-pegs">
+                      <span class="peg guess-peg" data-col="0" />
+                      <span class="peg guess-peg" data-col="1" />
+                      <span class="peg guess-peg" data-col="2" />
+                      <span class="peg guess-peg" data-col="3" />
+                    </div>
+                  </td>
+                  <td class="feedback-cell">
+                    <div class="feedback-pegs">
+                      <span class="peg feedback-peg small" />
+                      <span class="peg feedback-peg small" />
+                      <span class="peg feedback-peg small" />
+                      <span class="peg feedback-peg small" />
+                    </div>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </section>
 
 <style>
-  :root {
+    :root {
     --bg-primary: #1a1b26;
     --bg-secondary: #24283b;
     --bg-tertiary: #414868;
@@ -390,36 +399,6 @@ import Legend from "../components/LegendComponent.astro";
 
   .control-btn:active {
     transform: translateY(0);
-  }
-
-  /* Legend */
-  #legend {
-    background: var(--bg-secondary);
-    border-radius: 16px;
-    padding: 1.25rem;
-    border: 1px solid var(--bg-tertiary);
-  }
-
-  #legend h3 {
-    margin: 0 0 1rem 0;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--text-muted);
-  }
-
-  .legend-items {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 0.8125rem;
-    color: var(--text-secondary);
   }
 
   /* Responsive adjustments */
