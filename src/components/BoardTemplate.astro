@@ -1,3 +1,6 @@
+---
+const { rows = 12, cols = 4 } = Astro.props as { rows?: number; cols?: number };
+---
 <section id="game-board">
         <table>
           <thead>
@@ -9,23 +12,21 @@
           </thead>
           <tbody id="guess-rows">
             {
-              Array.from({ length: 12 }, (_, i) => (
+              Array.from({ length: rows }, (_, i) => (
                 <tr class="guess-row" data-row={i}>
                   <td class="row-num">{i + 1}</td>
                   <td class="guess-cell">
                     <div class="guess-pegs">
-                      <span class="peg guess-peg" data-col="0" />
-                      <span class="peg guess-peg" data-col="1" />
-                      <span class="peg guess-peg" data-col="2" />
-                      <span class="peg guess-peg" data-col="3" />
+                      {Array.from({ length: cols }, (_, c) => (
+                        <span class="peg guess-peg" data-col={c.toString()} />
+                      ))}
                     </div>
                   </td>
                   <td class="feedback-cell">
                     <div class="feedback-pegs">
-                      <span class="peg feedback-peg small" />
-                      <span class="peg feedback-peg small" />
-                      <span class="peg feedback-peg small" />
-                      <span class="peg feedback-peg small" />
+                      {Array.from({ length: cols }, () => (
+                        <span class="peg feedback-peg small" />
+                      ))}
                     </div>
                   </td>
                 </tr>
