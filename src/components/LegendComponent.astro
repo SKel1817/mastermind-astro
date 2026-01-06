@@ -1,34 +1,20 @@
----
-import Layout from "../layouts/Layout.astro";
-import ColorPalette from "../components/ColorPalette.astro";
-import BoardTemplate from "../components/BoardTemplate.astro";
-import GameControls from "../components/GameControls.astro";
-import Legend from "../components/LegendComponent.astro";
-
-const rows = 12;
-const cols = 4;
-const colors = ["red", "blue", "green", "yellow"];
----
-<script src="../components/colorGuessing">
-</script>
-
-
-<Layout>
-  <div id="game-container">
-    <header>
-      <h1>Mastermind</h1>
-      <p class="subtitle">Crack the secret code in 12 attempts</p>
-    </header>
-    <main>
-      <ColorPalette colors={colors} />
-      <BoardTemplate rows={rows} cols={cols} />
-      <!-- Hidden Answer (revealed on game end) -->
-      <GameControls />
-      <!-- Legend -->
-      <Legend />
-    </main>
-  </div>
-</Layout>
+<section id="legend">
+        <h3>Feedback Guide</h3>
+        <div class="legend-items">
+          <div class="legend-item">
+            <span class="peg feedback-peg small exact"></span>
+            <span>Correct color & position</span>
+          </div>
+          <div class="legend-item">
+            <span class="peg feedback-peg small partial"></span>
+            <span>Correct color, wrong position</span>
+          </div>
+          <div class="legend-item">
+            <span class="peg feedback-peg small"></span>
+            <span>Wrong color</span>
+          </div>
+        </div>
+      </section>
 
 <style>
   :root {

@@ -1,0 +1,98 @@
+---
+// Color selection palette component
+---
+<section id="color-palette">
+  <p class="palette-label">Choose your colors:</p>
+  <div class="palette-buttons">
+    <button id="guess-red" class="color-btn red" aria-label="Select red"></button>
+    <button id="guess-blue" class="color-btn blue" aria-label="Select blue"></button>
+    <button id="guess-green" class="color-btn green" aria-label="Select green"></button>
+    <button id="guess-yellow" class="color-btn yellow" aria-label="Select yellow"></button>
+  </div>
+</section>
+
+<style>
+  #color-palette {
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    padding: 1.25rem;
+    border: 1px solid var(--bg-tertiary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .palette-label {
+    margin: 0 0 1rem 0;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .palette-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .color-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.4),
+      inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  }
+
+  .color-btn:hover {
+    transform: scale(1.1);
+    box-shadow:
+      0 6px 20px rgba(0, 0, 0, 0.5),
+      inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  }
+
+  .color-btn:active {
+    transform: scale(0.95);
+  }
+
+  .color-btn.red {
+    background: radial-gradient(circle at 30% 30%, #ff9eb0, var(--peg-red) 60%);
+    border-color: #ff5577;
+  }
+
+  .color-btn.blue {
+    background: radial-gradient(
+      circle at 30% 30%,
+      #a5c4ff,
+      var(--peg-blue) 60%
+    );
+    border-color: #5a8af7;
+  }
+
+  .color-btn.green {
+    background: radial-gradient(
+      circle at 30% 30%,
+      #c8f0a0,
+      var(--peg-green) 60%
+    );
+    border-color: #7cb342;
+  }
+
+  .color-btn.yellow {
+    background: radial-gradient(
+      circle at 30% 30%,
+      #ffd699,
+      var(--peg-yellow) 60%
+    );
+    border-color: #d4915e;
+  }
+
+  @media (max-width: 480px) {
+    .color-btn {
+      width: 48px;
+      height: 48px;
+    }
+  }
+</style>
