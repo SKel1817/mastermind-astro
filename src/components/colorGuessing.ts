@@ -61,6 +61,18 @@ function guessColor(guess: string): void {
     // Update the UI peg for this guess
     updateUIForGuess(attemptRow, attemptCol, guess);
 
+    // Check this guess and update feedback peg immediately
+    if (guess === correctCombo[attemptCol]) {
+        console.log(`Correct color in correct position (index ${attemptCol})`);
+        setFeedbackPegState(attemptRow, attemptCol, 'exact');
+    } else if (correctCombo.includes(guess)) {
+        console.log(`Correct color but wrong position (index ${attemptCol})`);
+        setFeedbackPegState(attemptRow, attemptCol, 'partial');
+    } else {
+        console.log('Wrong color and position');
+        setFeedbackPegState(attemptRow, attemptCol, 'none');
+    }
+
     console.log(`${guess} guess for ${attemptRow}, ${attemptCol}`);
     attemptCol++; //increment guess
     if (attemptCol >= 4) {
@@ -85,17 +97,8 @@ function guessColor(guess: string): void {
 function checkAnswer(): void {
     let correctCount: number = 0;
     for (let i = 0; i < 4; i++) {
-        const guess = userGuesses[attemptRow][i];
-        if (guess === correctCombo[i]) {
-            console.log(`Correct color in correct position (index ${i})`);
-            setFeedbackPegState(attemptRow, i, 'exact');
+        if (userGuesses[attemptRow][i] === correctCombo[i]) {
             correctCount++;
-        } else if (correctCombo.includes(guess)) {
-            console.log(`Correct color but wrong position (index ${i})`);
-            setFeedbackPegState(attemptRow, i, 'partial');
-        } else {
-            console.log('Wrong color and position');
-            setFeedbackPegState(attemptRow, i, 'none');
         }
     }
     if(correctCount === 4){
